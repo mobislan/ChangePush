@@ -85,5 +85,6 @@
         <variable name="SENDER_ID" value="31428372280" />
         <variable name="FCM_VERSION" value="11.6.2" />
     </plugin>
+    <allow-navigation href="http://192.168.1.149:8100" />
     <engine name="android" spec="7.0.0" />
 </widget>

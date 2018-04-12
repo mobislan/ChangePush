@@ -9,6 +9,7 @@ import { Push, PushObject, PushOptions} from '@ionic-native/push';
 })
 export class MyApp {
   rootPage:any = HomePage;
+  registrationId: any;
 
   constructor(public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public alertCtrl:AlertController, public push: Push) {
     platform.ready().then(() => {
@@ -24,7 +25,7 @@ export class MyApp {
     const options: PushOptions = {
      android: {
          senderID: '31428372280',
-         topics:['nfl_change'],
+         topics:['nfl_changes'],
          vibrate:true,
          sound:true,
          forceShow:true
@@ -36,7 +37,6 @@ export class MyApp {
      },
      windows: {}
   };
-
   const pushObject: PushObject = this.push.init(options);
 
   pushObject.on('notification').subscribe((notification: any) => {
@@ -44,13 +44,14 @@ export class MyApp {
       let youralert = this.alertCtrl.create({
         title: 'New Push notification',
         message: notification.message
+
       });
       youralert.present();
     }
   });
 
   pushObject.on('registration').subscribe((registration: any) => {
-     //do whatever you want with the registration ID
+     this.registrationId = registration.registrationId;
   });
 
   pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
