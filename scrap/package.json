@@ -1,0 +1,9 @@
+{
+  "name": "scrap",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "firebase-admin": "^5.12.0",
+    "cheerio": "^1.0.0-rc.2"
+  }
+}
